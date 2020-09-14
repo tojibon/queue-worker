@@ -2,7 +2,6 @@
 // src/Command/ReportPdfCommand.php
 namespace App\MessageCommand;
 
-use App\MessageCommand\Contracts\ApplicationCommandInterface;
 use App\MessageCommand\Contracts\LoggingOnCommandInterface;
 
 class ReportPdfCommand extends ApplicationCommand implements LoggingOnCommandInterface
@@ -27,9 +26,9 @@ class ReportPdfCommand extends ApplicationCommand implements LoggingOnCommandInt
         return $this->params;
     }
 
-    public function setOptions(string $name)
+    public function setOptions(string $name, string $value)
     {
-        $this->options[] = $name;
+        $this->options[$name] = $value;
     }
 
     public function getOptions(): array

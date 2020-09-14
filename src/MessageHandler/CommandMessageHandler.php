@@ -29,7 +29,7 @@ class CommandMessageHandler implements MessageHandlerInterface
     {
         // ... do some work - like generating a report PDF based on the command!
         dump('Processing command: ' . $message->getCommand());
-        if ($message->getCommandMessageInstance() instanceof LoggingOnCommandInterface ) {
+        if ($message->getCommandMessageInstance() instanceof LoggingOnCommandInterface) {
             dump('Command logging Channel: ' . $message->getCommandMessageInstance()->getLogger());
             // Log you information on a custom Logger Channel named: $message->getCommandMessageInstance()->getLogger()
         }

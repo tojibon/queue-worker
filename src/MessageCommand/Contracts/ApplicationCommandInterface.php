@@ -8,7 +8,7 @@ interface ApplicationCommandInterface
 
     public function getParams(): array;
 
-    public function setOptions(string $name);
+    public function setOptions(string $name, string $value);
 
     public function getOptions(): array;
 

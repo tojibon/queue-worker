@@ -2,8 +2,6 @@
 // src/Command/DebugMessengerCommand.php
 namespace App\MessageCommand;
 
-use App\MessageCommand\Contracts\ApplicationCommandInterface;
-
 class DebugMessengerCommand extends ApplicationCommand
 {
     protected static $command = 'debug:messenger';
@@ -25,9 +23,9 @@ class DebugMessengerCommand extends ApplicationCommand
         return $this->params;
     }
 
-    public function setOptions(string $name)
+    public function setOptions(string $name, string $value)
     {
-        $this->options[] = $name;
+        $this->options[$name] = $name;
     }
 
     public function getOptions(): array
