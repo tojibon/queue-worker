@@ -3,6 +3,7 @@
 namespace App\MessageHandler;
 
 use App\Message\CommandMessage;
+use App\MessageCommand\Contracts\LoggingOnCommandInterface;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -28,6 +29,10 @@ class CommandMessageHandler implements MessageHandlerInterface
     {
         // ... do some work - like generating a report PDF based on the command!
         dump('Processing command: ' . $message->getCommand());
+        if ($message->getCommandMessageInstance() instanceof LoggingOnCommandInterface ) {
+            dump('Command logging Channel: ' . $message->getCommandMessageInstance()->getLogger());
+            // Log you information on a custom Logger Channel named: $message->getCommandMessageInstance()->getLogger()
+        }
         dump($message->getDescription());
         $this->processCommandMessage($message);
     }

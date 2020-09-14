@@ -4,7 +4,7 @@ namespace App\MessageCommand;
 
 use App\MessageCommand\Contracts\ApplicationCommandInterface;
 
-class DebugMessengerCommand implements ApplicationCommandInterface
+class DebugMessengerCommand extends ApplicationCommand
 {
     protected static $command = 'debug:messenger';
     private $params = [];

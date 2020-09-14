@@ -20,6 +20,11 @@ class CommandMessage
         $this->command = $command;
     }
 
+    public function getCommandMessageInstance()
+    {
+        return $this->command;
+    }
+
     public function getCommand()
     {
         return $this->command->getCommand();

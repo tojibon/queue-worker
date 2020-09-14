@@ -20,6 +20,7 @@ class CommandMessageQueueController extends AbstractController
         $registerCommand = new ReportPdfCommand();
         //$registerCommand->setParams('arg1', 1);
         $registerCommand->setOptions('--help');
+        $registerCommand->setLogger('customLoggerChannel');
 
         //Dispatching a static command message
         $message = new CommandMessage($registerCommand);

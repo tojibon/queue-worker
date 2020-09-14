@@ -3,12 +3,14 @@
 namespace App\MessageCommand;
 
 use App\MessageCommand\Contracts\ApplicationCommandInterface;
+use App\MessageCommand\Contracts\LoggingOnCommandInterface;
 
-class ReportPdfCommand implements ApplicationCommandInterface
+class ReportPdfCommand extends ApplicationCommand implements LoggingOnCommandInterface
 {
     protected static $command = 'app:generate-report-pdf';
     private $params = [];
     private $options = [];
+    private $logger = 'report';
 
     public function getCommand()
     {
@@ -38,5 +40,15 @@ class ReportPdfCommand implements ApplicationCommandInterface
     public function getDescription()
     {
         return 'This command allows you to create a PDF report...';
+    }
+
+    public function setLogger(string $name)
+    {
+        $this->logger = $name;
+    }
+
+    public function getLogger(): string
+    {
+        return $this->logger;
     }
 }
