@@ -11,10 +11,19 @@ class GeneratePdfCommand extends Command implements ApplicationCommandInterface
 {
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'app:generate-pdf';
+    private $params = [];
+    private $options = [];
 
     protected function configure()
     {
-        // ...
+        $this
+            // the short description shown while running "php bin/console list"
+            ->setDescription('Creates a PDF Report.')
+
+            // the full command description shown when running the command with
+            // the "--help" option
+            ->setHelp('This command allows you to create a PDF report...')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -38,8 +47,23 @@ class GeneratePdfCommand extends Command implements ApplicationCommandInterface
         return self::$defaultName;
     }
 
-    public function getDescription()
+    public function setParams(string $name, string $value)
     {
-        return 'A static description of command which will generate a reporting PDF!';
+        $this->params[$name] = $value;
+    }
+
+    public function getParams(): array
+    {
+        return $this->params;
+    }
+
+    public function setOptions(string $name)
+    {
+        $this->options[] = $name;
+    }
+
+    public function getOptions(): array
+    {
+        return $this->options;
     }
 }

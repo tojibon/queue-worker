@@ -17,6 +17,8 @@ class CommandMessageQueueController extends AbstractController
     public function index(MessageBusInterface $bus)
     {
         $registerCommand = new GeneratePdfCommand();
+        //$registerCommand->setParams('arg1', 1);
+        $registerCommand->setOptions('--help');
 
         //Dispatching a static command message
         $message = new CommandMessage($registerCommand);
