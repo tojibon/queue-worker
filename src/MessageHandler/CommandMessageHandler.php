@@ -10,6 +10,7 @@ class CommandMessageHandler implements MessageHandlerInterface
     public function __invoke(CommandMessage $message)
     {
         // ... do some work - like generating a report PDF based on the command!
-        print_r($message);
+        dump($message->getCommand());
+        dump($message->getDescription());
     }
 }

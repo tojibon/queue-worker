@@ -2,24 +2,22 @@
 // src/Message/CommandMessage.php
 namespace App\Message;
 
+use App\Command\Contracts\ApplicationCommandInterface;
+
 class CommandMessage
 {
     private $command;
-    private $description;
 
-    public function __construct(string $command, string $description = '')
+    public function __construct(ApplicationCommandInterface $command)
     {
         $this->command = $command;
-        $this->description = $description;
     }
 
-    public function getCommand(): string
-    {
-        return $this->command;
+    public function getCommand() {
+        return $this->command->getCommand();
     }
 
-    public function getDescription(): string
-    {
-        return $this->description;
+    public function getDescription() {
+        return $this->command->getDescription();
     }
 }
