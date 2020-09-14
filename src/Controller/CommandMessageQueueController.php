@@ -2,7 +2,8 @@
 // src/Controller/CommandMessageQueueController.php
 namespace App\Controller;
 
-use App\Command\GeneratePdfCommand;
+use App\MessageCommand\DebugMessengerCommand;
+use App\MessageCommand\ReportPdfCommand;
 use App\Message\CommandMessage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -16,9 +17,16 @@ class CommandMessageQueueController extends AbstractController
      */
     public function index(MessageBusInterface $bus)
     {
-        $registerCommand = new GeneratePdfCommand();
+        $registerCommand = new ReportPdfCommand();
         //$registerCommand->setParams('arg1', 1);
         $registerCommand->setOptions('--help');
+
+        //Dispatching a static command message
+        $message = new CommandMessage($registerCommand);
+        $bus->dispatch($message);
+
+
+        $registerCommand = new DebugMessengerCommand();
 
         //Dispatching a static command message
         $message = new CommandMessage($registerCommand);

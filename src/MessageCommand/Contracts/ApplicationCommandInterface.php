@@ -1,6 +1,6 @@
 <?php
 // src/Command/Contracts/ApplicationCommandInterface.php
-namespace App\Command\Contracts;
+namespace App\MessageCommand\Contracts;
 
 interface ApplicationCommandInterface
 {

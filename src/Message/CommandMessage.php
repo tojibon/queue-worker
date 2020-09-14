@@ -2,7 +2,7 @@
 // src/Message/CommandMessage.php
 namespace App\Message;
 
-use App\Command\Contracts\ApplicationCommandInterface;
+use App\MessageCommand\Contracts\ApplicationCommandInterface;
 
 class CommandMessage
 {
@@ -20,19 +20,23 @@ class CommandMessage
         $this->command = $command;
     }
 
-    public function getCommand() {
+    public function getCommand()
+    {
         return $this->command->getCommand();
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->command->getDescription();
     }
 
-    public function getParams() {
+    public function getParams()
+    {
         return $this->command->getParams();
     }
 
-    public function getOptions() {
+    public function getOptions()
+    {
         return $this->command->getOptions();
     }
 }
