@@ -5,7 +5,19 @@ framework:
 
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
-            async: '%env(MESSENGER_TRANSPORT_DSN)%'
+            async:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                retry_strategy:
+                    delay: 100
+                options:
+                    exchange:
+                        name: commands_messages_exchange
+                        type: direct
+                        default_publish_routing_key: normal
+                    queues:
+                        commands_messages_queue:
+                            binding_keys: [ normal ]
+
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
 
